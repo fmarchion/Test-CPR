@@ -137,6 +137,12 @@ public class cprRegressionTest {
         WebElement submitRef = driver.findElement(By.linkText("Submit Refund Request"));
         submitRef.click();
 
+        //WebElement confirm = driver.findElement(By.cssSelector("div.cpr_RSC_container"));
+        WebElement confirm = driverWait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.cpr_RSC_container")));
+        String string = confirm.getText();
+        System.out.println(string);
+        //Assert.assertTrue(confirm.getText().equalsIgnoreCase("Thank You! Your Refund Has Been Requested"), "Error: 'Thank you text is not present'");
+        Assert.assertTrue(confirm.getText().contains("Thank You! Your Refund Has Been Requested"), "Error: 'Thank you text is not present'");
     }
 
     @Test
@@ -266,6 +272,12 @@ public class cprRegressionTest {
         //Submit Refund Request
         WebElement submitRef = driver.findElement(By.linkText("Submit Refund Request"));
         submitRef.click();
+
+        WebElement confirm = driverWait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.cpr_RSC_container")));
+        String string = confirm.getText();
+        System.out.println(string);
+        //Assert.assertTrue(confirm.getText().equalsIgnoreCase("Thank You! Your Refund Has Been Requested"), "Error: 'Thank you text is not present'");
+        Assert.assertTrue(confirm.getText().contains("Thank You! Your Refund Has Been Requested"), "Error: 'Thank you text is not present'");
 
     }
 
