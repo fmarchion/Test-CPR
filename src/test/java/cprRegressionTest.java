@@ -36,8 +36,7 @@ public class cprRegressionTest {
     }
 
     @Test
-    public void under25refund()
-    {
+    public void under25refund() {
         // Click on My Price Rewinds link in header
         WebElement myPriceRewinds = driver.findElement(By.xpath("//a[contains(.,'My Price Rewinds')]"));
         driverWait.until(ExpectedConditions.visibilityOf(myPriceRewinds));
@@ -146,8 +145,7 @@ public class cprRegressionTest {
     }
 
     @Test
-    public void over25RefundTest()
-    {
+    public void over25RefundTest() {
         // Click on My Price Rewinds link in header
         WebElement myPriceRewinds = driver.findElement(By.xpath("//a[contains(.,'My Price Rewinds')]"));
         driverWait.until(ExpectedConditions.visibilityOf(myPriceRewinds));
@@ -281,4 +279,240 @@ public class cprRegressionTest {
 
     }
 
+    @Test
+    public void createTrackOver25() {
+
+        // Enter product to search
+        WebElement cprsearch = driver.findElement(By.cssSelector("input[type='text']"));
+        driverWait.until(ExpectedConditions.visibilityOf(cprsearch));
+        cprsearch.sendKeys("gopro");
+
+        // Click the Search submit button from the homepage
+        WebElement click11 = driver.findElement(By.xpath("//button[@class='cpr_searchSubmit']"));
+        driverWait.until(ExpectedConditions.visibilityOf(click11));
+        click11.click();
+
+        //Category facet click
+        WebElement category = driver.findElement(By.xpath("//a[contains(.,'Camera & Photo')]"));
+        driverWait.until(ExpectedConditions.visibilityOf(category));
+        category.click();
+
+        //Category facet click2
+        WebElement category2 = driver.findElement(By.xpath("//a[contains(.,'Camcorders')]"));
+        driverWait.until(ExpectedConditions.visibilityOf(category2));
+        category2.click();
+
+        //Price facet click
+        WebElement price = driver.findElement(By.xpath("//a[contains(.,'$225 - $')]"));
+        driverWait.until(ExpectedConditions.visibilityOf(price));
+        price.click();
+
+        //Merchant facet click
+        WebElement merchant = driver.findElement(By.xpath("//a[contains(.,'BeachCamera.com')]"));
+        driverWait.until(ExpectedConditions.visibilityOf(merchant));
+        merchant.click();
+
+        //Select product to track
+        List<WebElement> buttons = driver.findElements(By.className("cpr_trackBtn"));
+        WebElement query_enquirymode = buttons.get(0);
+        query_enquirymode.click();
+
+        //Create a track
+        driverWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.id("cpr_SPR_price")));
+        WebElement trackprice = driver.findElement(By.id("cpr_SPR_price"));
+        WebElement date = driver.findElement(By.id("cpr_SPR_date"));
+        WebElement store = driver.findElement(By.id("cpr_SPR_place"));
+        WebElement StartButton = driver.findElement(By.id("cpr_SPR_submit"));
+
+        trackprice.sendKeys("500");
+        date.sendKeys("08/15/2015");
+        store.click();
+        store.sendKeys("Amazon");
+        StartButton.click();
+
+        //Edit Purchase Details
+        WebElement editPurchaseDetails = driver.findElement(By.linkText("Edit Purchase Details"));
+        driverWait.until(ExpectedConditions.visibilityOf(editPurchaseDetails));
+        editPurchaseDetails.click();
+
+        driver.findElement(By.id("cpr_SPR_price")).clear();
+        driver.findElement(By.id("cpr_SPR_date")).clear();
+        driver.findElement(By.id("cpr_SPR_place")).clear();
+
+        //Edit a track
+        driverWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.id("cpr_SPR_price")));
+        WebElement trackprice1 = driver.findElement(By.id("cpr_SPR_price"));
+        WebElement date1 = driver.findElement(By.id("cpr_SPR_date"));
+        WebElement store1 = driver.findElement(By.id("cpr_SPR_place"));
+        WebElement StartButton1 = driver.findElement(By.id("cpr_SPR_submit"));
+
+        trackprice1.sendKeys("399.99");
+        date1.sendKeys("08/10/2015");
+        store1.click();
+        store1.sendKeys("Target");
+        StartButton1.click();
+
+        //Cancel Rewind no
+        driver.findElement(By.xpath("//a[@class='cpr_cancelToggle']")).click();
+        //Click No to collapse toggle
+        WebElement cancel = driver.findElement(By.xpath("//a[@class='cpr_cancelToggle']"));
+        driverWait.until(ExpectedConditions.visibilityOf(cancel));
+        cancel.click();
+
+        //Download Claim form
+        // WebElement claimForm = driver.findElement(By.linkText("claim form"));
+        // driverWait.until(ExpectedConditions.visibilityOf(claimForm));
+        // claimForm.click();
+
+        //Upload receipt
+        WebElement receipt = driverWait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".cpr_frame input[name='receipt']")));
+        //receipt.click();
+        receipt.sendKeys("C:\\Users\\frank.marchion\\Documents\\Test Receipts\\CARTERA TEST RECEIPT PNG.png");
+
+        //Hide receipt
+        driver.findElement(By.linkText("Hide Receipt")).click();
+        //Click to expand receipt container
+        WebElement expand = driver.findElement(By.linkText("Upload or View Receipt(s)"));
+        driverWait.until(ExpectedConditions.visibilityOf(expand));
+        expand.click();
+    }
+
+    @Test
+    public void createTrackUnder25() {
+        // Enter product to search
+        WebElement cprsearch = driver.findElement(By.cssSelector("input[type='text']"));
+        driverWait.until(ExpectedConditions.visibilityOf(cprsearch));
+        cprsearch.sendKeys("gopro");
+
+        // Click the Search submit button from the homepage
+        WebElement click11 = driver.findElement(By.xpath("//button[@class='cpr_searchSubmit']"));
+        driverWait.until(ExpectedConditions.visibilityOf(click11));
+        click11.click();
+
+        //Category facet click
+        WebElement category = driver.findElement(By.xpath("//a[contains(.,'Camera & Photo')]"));
+        driverWait.until(ExpectedConditions.visibilityOf(category));
+        category.click();
+
+        //Category facet click2
+        WebElement category2 = driver.findElement(By.xpath("//a[contains(.,'Camcorders')]"));
+        driverWait.until(ExpectedConditions.visibilityOf(category2));
+        category2.click();
+
+        //Price facet click
+        WebElement price = driver.findElement(By.xpath("//a[contains(.,'$225 - $')]"));
+        driverWait.until(ExpectedConditions.visibilityOf(price));
+        price.click();
+
+        //Merchant facet click
+        WebElement merchant = driver.findElement(By.xpath("//a[contains(.,'BeachCamera.com')]"));
+        driverWait.until(ExpectedConditions.visibilityOf(merchant));
+        merchant.click();
+
+        //Select product to track, Gopro - Hero4 Silver Action Camera, 1st position
+        List<WebElement> buttons = driver.findElements(By.className("cpr_trackBtn"));
+        WebElement query_enquirymode = buttons.get(0);
+        query_enquirymode.click();
+
+        //Create a track
+        driverWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.id("cpr_SPR_price")));
+        WebElement trackprice = driver.findElement(By.id("cpr_SPR_price"));
+        WebElement date = driver.findElement(By.id("cpr_SPR_date"));
+        WebElement store = driver.findElement(By.id("cpr_SPR_place"));
+        WebElement StartButton = driver.findElement(By.id("cpr_SPR_submit"));
+
+        trackprice.sendKeys("500");
+        date.sendKeys("08/15/2015");
+        store.click();
+        store.sendKeys("Amazon");
+        StartButton.click();
+
+        //Edit Purchase Details
+        WebElement editPurchaseDetails = driver.findElement(By.linkText("Edit Purchase Details"));
+        driverWait.until(ExpectedConditions.visibilityOf(editPurchaseDetails));
+        editPurchaseDetails.click();
+
+        driver.findElement(By.id("cpr_SPR_price")).clear();
+        driver.findElement(By.id("cpr_SPR_date")).clear();
+        driver.findElement(By.id("cpr_SPR_place")).clear();
+
+        //Edit a track
+        driverWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.id("cpr_SPR_price")));
+        WebElement trackprice1 = driver.findElement(By.id("cpr_SPR_price"));
+        WebElement date1 = driver.findElement(By.id("cpr_SPR_date"));
+        WebElement store1 = driver.findElement(By.id("cpr_SPR_place"));
+        WebElement StartButton1 = driver.findElement(By.id("cpr_SPR_submit"));
+
+        trackprice1.sendKeys("365.00");
+        date1.sendKeys("08/10/2015");
+        store1.click();
+        store1.sendKeys("Target");
+        StartButton1.click();
+
+        //Cancel Rewind no
+        driver.findElement(By.xpath("//a[@class='cpr_cancelToggle']")).click();
+        //Click No to collapse toggle
+        WebElement cancel = driver.findElement(By.xpath("//a[@class='cpr_cancelToggle']"));
+        driverWait.until(ExpectedConditions.visibilityOf(cancel));
+        cancel.click();
+
+        //Download Claim form
+        // WebElement claimForm = driver.findElement(By.linkText("claim form"));
+        // driverWait.until(ExpectedConditions.visibilityOf(claimForm));
+        // claimForm.click();
+
+        //Upload receipt
+        WebElement receipt = driverWait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".cpr_frame input[name='receipt']")));
+        //receipt.click();
+        receipt.sendKeys("C:\\Users\\frank.marchion\\Documents\\Test Receipts\\CARTERA TEST RECEIPT JPG.jpg");
+
+        //Hide receipt
+        driver.findElement(By.linkText("Hide Receipt")).click();
+        //Click to expand receipt container
+        WebElement expand = driver.findElement(By.linkText("Upload or View Receipt(s)"));
+        driverWait.until(ExpectedConditions.visibilityOf(expand));
+        expand.click();
+
+    }
+
+    @Test
+    public void deleteTrack() {
+        // Click on My Price Rewinds link in header
+        WebElement myPriceRewinds = driver.findElement(By.xpath("//a[contains(.,'My Price Rewinds')]"));
+        driverWait.until(ExpectedConditions.visibilityOf(myPriceRewinds));
+        myPriceRewinds.click();
+
+        // Select first track
+        List<WebElement> selectTrack1 = driverWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//a[@class='cpr_trackBtn']")));
+        selectTrack1.get(0).click();
+
+        //Get track id
+        String trackId = driver.findElement(By.cssSelector("div.cpr_refNum span")).getText();
+        System.out.println("Reference #: " + trackId);
+
+        //Cancel Rewind yes
+        driver.findElement(By.xpath("//a[@class='cpr_cancelToggle']")).click();
+        WebElement cancelYes = driver.findElement(By.xpath("//a[contains(.,'Yes')]"));
+        driverWait.until(ExpectedConditions.visibilityOf(cancelYes));
+        cancelYes.click();
+
+
+        if (driver.getPageSource().contains("trackId")) {
+            System.out.println("Track has not been deleted");
+        } else {
+            System.out.println("Track has been deleted");
+
+        //Click the browser back button after track is deleted and verify error message
+            driverWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//a[@class='cpr_trackBtn']")));
+            driver.navigate().back();
+            driver.navigate().refresh();
+            String sysErr = driver.findElement(By.className("cpr_serverError")).getText();
+            System.out.println("Error message on page: " + sysErr);
+            //System.out.println("Refund Amount : " + elem.findElement(By.cssSelector(".cpr_refund span")).getText().substring(1));
+            //  List<WebElement> selectTrack1 = driverWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[@class='cpr_sm-6 cpr_md-4']")));
+            //  selectTrack1.get(0).click();
+
+
+        }
+    }
 }
