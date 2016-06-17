@@ -303,12 +303,12 @@ public class cprRegressionTest {
         category2.click();
 
         //Price facet click
-        WebElement price = driver.findElement(By.xpath("//a[contains(.,'$225 - $')]"));
+        WebElement price = driver.findElement(By.xpath("//a[contains(.,'$250 - $')]"));
         driverWait.until(ExpectedConditions.visibilityOf(price));
         price.click();
 
         //Merchant facet click
-        WebElement merchant = driver.findElement(By.xpath("//a[contains(.,'BeachCamera.com')]"));
+        WebElement merchant = driver.findElement(By.xpath("//a[contains(.,'Rakuten.com Shopping')]"));
         driverWait.until(ExpectedConditions.visibilityOf(merchant));
         merchant.click();
 
@@ -400,12 +400,12 @@ public class cprRegressionTest {
         category2.click();
 
         //Price facet click
-        WebElement price = driver.findElement(By.xpath("//a[contains(.,'$225 - $')]"));
+        WebElement price = driver.findElement(By.xpath("//a[contains(.,'$250 - $')]"));
         driverWait.until(ExpectedConditions.visibilityOf(price));
         price.click();
 
         //Merchant facet click
-        WebElement merchant = driver.findElement(By.xpath("//a[contains(.,'BeachCamera.com')]"));
+        WebElement merchant = driver.findElement(By.xpath("//a[contains(.,'Adorama')]"));
         driverWait.until(ExpectedConditions.visibilityOf(merchant));
         merchant.click();
 
@@ -422,7 +422,7 @@ public class cprRegressionTest {
         WebElement StartButton = driver.findElement(By.id("cpr_SPR_submit"));
 
         trackprice.sendKeys("500");
-        date.sendKeys("08/15/2015");
+        date.sendKeys("12/30/2015");
         store.click();
         store.sendKeys("Amazon");
         StartButton.click();
